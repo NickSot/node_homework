@@ -10,22 +10,21 @@ const contentTypePlainText = {
 
 
 exports.saveItem = function (req, res) {
-    var mouse = toMouse(req.body);
-    mouse.save((error) => {
+    var disc = toDisc(req.body);
+    disc.save((error) => {
         if (!error) {
-            mouse.save();
+            disc.save();
             res.writeHead(201, contentTypeJson);
             res.end(JSON.stringify(req.body));
         } else {
-            MouseModel.findOne({ name : mouse.name }, (err, result) => {
+            Discography.findOne({ name : disc.name }, (err, result) => {
                 if (err) {
                     console.log(err);
                     res.writeHead(500, contentTypePlainText);
                     res.end('Internal Server Error');
                 }
-
                 if (!result) {
-                    mouse.save();
+                    disc.save();
                     res.writeHead(201, contentTypeJson);
                     res.end(JSON.stringify(req.body));
                 } else {
