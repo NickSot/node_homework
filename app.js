@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var connectionService = require("./modules/connection_service");
+
+connectionService.connectionDB();
 
 var User = require('./models/user').User;
 var Discography = require('./models/discography').Discography;

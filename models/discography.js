@@ -6,7 +6,7 @@ const discographySchema = new mongoose.Schema(
             type: String
         },
 
-        coverImage: Blob,
+        coverImage: Buffer,
 
         songs: [String]
     }
